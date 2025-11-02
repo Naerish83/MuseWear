@@ -1,7 +1,277 @@
-﻿body {
-    background: #0a0a0a;
-    color: #00d9ff;
-    font-family: 'Inter', sans-serif;
-    text-align: center;
-    padding-top: 20%;
+/* =======================================================
+   MuseWear Master Stylesheet v1.0
+   Division of Muse Systems
+   ======================================================= */
+
+/* ------------------------------
+   COLOR VARIABLES & TOKENS
+--------------------------------*/
+:root {
+  --mw-bg-dark: #0a0a0a;
+  --mw-bg-secondary: #1a1a1a;
+  --mw-text-primary: #e0e0e0;
+  --mw-text-secondary: #8a8a8a;
+
+  /* Core accents */
+  --mw-cyan: #00d9ff;
+  --mw-silver: #c0c0c0;
+  --mw-white: #ffffff;
+  --mw-gray: #9e9e9e;
+
+  /* Capsule hues */
+  --mw-division-zero: #9e9e9e;
+  --mw-signal-skin: #ff1744;
+  --mw-soft-system: #8bc34a;
+  --mw-executive-ghost: #fdd835;
+  --mw-halo-circuit: #00bcd4;
+
+  /* Glow helpers */
+  --mw-glow-cyan: 0 0 25px rgba(0,217,255,0.5);
+  --mw-glow-silver: 0 0 25px rgba(192,192,192,0.4);
 }
+
+/* ------------------------------
+   BASE & RESET
+--------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--mw-bg-dark);
+  color: var(--mw-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mw-silver);
+}
+
+h1 { font-size: 3.5rem; text-shadow: var(--mw-glow-silver); }
+h2 { font-size: 2.3rem; color: var(--mw-cyan); }
+h3 { font-size: 1.4rem; color: var(--mw-cyan); }
+
+p, span, li {
+  font-family: 'Inter', sans-serif;
+  color: var(--mw-text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--mw-cyan);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover { color: var(--mw-silver); }
+
+/* ------------------------------
+   NAVIGATION
+--------------------------------*/
+.product-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: var(--mw-bg-secondary);
+  border-bottom: 1px solid #333;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mw-silver);
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--mw-text-secondary);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--mw-cyan);
+}
+
+/* ------------------------------
+   HERO + LANDING
+--------------------------------*/
+.landing {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--mw-bg-dark);
+  overflow: hidden;
+}
+
+.mw-overlay-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,217,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,217,255,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridScroll 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridScroll {
+  from { transform: translate(0, 0); }
+  to { transform: translate(80px, 80px); }
+}
+
+.brand-header { text-align: center; z-index: 2; }
+.division-badge {
+  font-size: 0.85rem;
+  color: var(--mw-text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.brand-name {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: var(--mw-silver);
+  text-shadow: var(--mw-glow-silver);
+}
+.tagline {
+  font-size: 1.1rem;
+  color: var(--mw-cyan);
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+/* Accent bar */
+.accent-bar {
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--mw-cyan);
+  margin: 1.5rem auto;
+}
+
+/* ------------------------------
+   CAROUSEL (Landing)
+--------------------------------*/
+.product-carousel {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 400px;
+  margin: 3rem auto;
+}
+
+.carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.product-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+}
+.product-slide.active { opacity: 1; }
+
+.product-image-placeholder {
+  width: 600px;
+  height: 350px;
+  background: linear-gradient(135deg, var(--mw-bg-secondary), #2a2a2a);
+  border: 2px solid var(--mw-cyan);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mw-cyan);
+  font-size: 1.5rem;
+  box-shadow: 0 0 40px rgba(0,217,255,0.2);
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.indicator {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.indicator.active {
+  background: var(--mw-cyan);
+  box-shadow: 0 0 10px var(--mw-cyan);
+}
+
+/* ------------------------------
+   CTA BUTTON
+--------------------------------*/
+.enter-btn,
+.purchase-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  margin-top: 2rem;
+  border: 2px solid var(--mw-cyan);
+  color: var(--mw-text-primary);
+  background: transparent;
+  letter-spacing: 3px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.enter-btn:hover,
+.purchase-btn:hover {
+  background: var(--mw-cyan);
+  color: var(--mw-bg-dark);
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--mw-cyan), transparent);
+  transition: left 0.5s ease;
+}
+.enter-btn:hover .btn-glow { left: 100%; }
+
+.btn-text { position: relative; z-index: 2; }
+
+/* ------------------------------
+   PRODUCT GRID (Capsules)
+--------------------------------*/
+.product-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.5rem;
+}
+
+.product-card {
+  position: relative;
+  background: var(--mw-bg-secondary);
+  border: 2px so
