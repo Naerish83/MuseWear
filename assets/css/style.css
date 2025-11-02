@@ -622,4 +622,55 @@ section {
   box-shadow: 0 0 15px var(--mw-cyan);
 }
 
+/* ------------------------------
+   COLOR SELECTOR POLISH
+--------------------------------*/
+.color-selector {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+}
+
+.color-wheel {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--mw-bg-secondary);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.color-swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.color-swatch.active {
+  outline: 2px solid var(--mw-cyan);
+  box-shadow: 0 0 15px var(--mw-cyan);
+}
+
+/* Variant caption */
+.variant-label {
+  margin-top: 1rem;
+  color: var(--mw-cyan);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+/* Fade effect for image swaps */
+.lookbook-item img {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.lookbook-item img.fade-out {
+  opacity: 0;
+}
+
 
