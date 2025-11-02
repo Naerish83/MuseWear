@@ -59,6 +59,19 @@
     <a href="../index.html#capsules" class="purchase-btn">Back to Capsules</a>
     <p class="cta-subtext">MuseWear · Division of Muse Systems</p>
   </section>
+  
+  <section class="lookbook">
+    <h2>Lookbook</h2>
+    <div class="lookbook-container">
+      <button class="lookbook-btn prev">&#10094;</button>
+      <div class="lookbook-track">
+        <div class="lookbook-item"><img src="../assets/images/division_zero_01.jpg" alt="Look 01"></div>
+        <div class="lookbook-item"><img src="../assets/images/division_zero_02.jpg" alt="Look 02"></div>
+        <div class="lookbook-item"><img src="../assets/images/division_zero_03.jpg" alt="Look 03"></div>
+      </div>
+      <button class="lookbook-btn next">&#10095;</button>
+    </div>
+  </section>
 
   <footer class="product-footer">
     <div class="footer-content">
@@ -68,5 +81,28 @@
       </div>
     </div>
   </footer>
+  <script>
+const track = document.querySelector('.lookbook-track');
+const items = document.querySelectorAll('.lookbook-item');
+const next = document.querySelector('.lookbook-btn.next');
+const prev = document.querySelector('.lookbook-btn.prev');
+let index = 0;
+
+function updateSlider() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+next.addEventListener('click', () => {
+  index = (index + 1) % items.length;
+  updateSlider();
+});
+
+prev.addEventListener('click', () => {
+  index = (index - 1 + items.length) % items.length;
+  updateSlider();
+});
+</script>
+
 </body>
 </html>
+
