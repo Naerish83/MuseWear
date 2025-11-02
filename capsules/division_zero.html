@@ -150,9 +150,61 @@ swatches.forEach(swatch => {
 });
 </script>
   
+<section class="color-selector">
+  <h2>Color Variants</h2>
+  <div class="color-wheel">
+    <button class="color-swatch" data-color="graphite" data-hex="#9e9e9e" title="Graphite"></button>
+    <button class="color-swatch" data-color="green" data-hex="#8bc34a" title="Green"></button>
+    <button class="color-swatch" data-color="blue" data-hex="#00bcd4" title="Blue"></button>
+    <button class="color-swatch" data-color="red" data-hex="#ff1744" title="Red"></button>
+  </div>
+  <p id="variant-name" class="variant-label">Graphite Edition</p>
+</section>
+
+<script>
+const swatches = document.querySelectorAll('.color-swatch');
+const looks = [
+  document.getElementById('look1'),
+  document.getElementById('look2'),
+  document.getElementById('look3')
+];
+const variantLabel = document.getElementById('variant-name');
+const baseName = 'division_zero'; // adjust per capsule
+
+swatches.forEach(swatch => {
+  swatch.addEventListener('click', () => {
+    const color = swatch.dataset.color;
+    const hex = swatch.dataset.hex;
+    const labelText = `${swatch.title} Edition`;
+
+    // highlight selected swatch
+    swatches.forEach(s => s.classList.remove('active'));
+    swatch.classList.add('active');
+
+    // fade out images
+    looks.forEach(img => img.classList.add('fade-out'));
+
+    // after fade, swap sources then fade back in
+    setTimeout(() => {
+      looks.forEach((img, index) => {
+        img.src = `../assets/images/${baseName}_${color}_0${index + 1}.jpg`;
+      });
+      setTimeout(() => {
+        looks.forEach(img => img.classList.remove('fade-out'));
+      }, 50);
+    }, 400);
+
+    // update caption color and text
+    variantLabel.textContent = labelText;
+    variantLabel.style.color = hex;
+    document.documentElement.style.setProperty('--mw-cyan', hex);
+  });
+});
+</script>
   
 </body>
 </html>
+
 
 
 
