@@ -523,3 +523,69 @@ section {
   .specs-grid, .features-list { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; }
 }
+/* ------------------------------
+   LOOKBOOK SLIDER
+--------------------------------*/
+.lookbook {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.lookbook h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--mw-cyan);
+}
+
+.lookbook-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.lookbook-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.lookbook-item {
+  min-width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lookbook-item img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 6px;
+  border: 2px solid var(--mw-cyan);
+  box-shadow: 0 0 20px rgba(0,217,255,0.2);
+}
+
+/* Navigation buttons */
+.lookbook-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10,10,10,0.7);
+  border: 1px solid var(--mw-cyan);
+  color: var(--mw-cyan);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.lookbook-btn:hover {
+  background: var(--mw-cyan);
+  color: var(--mw-bg-dark);
+}
+
+.lookbook-btn.prev { left: 0.5rem; }
+.lookbook-btn.next { right: 0.5rem; }
+
+
