@@ -588,4 +588,38 @@ section {
 .lookbook-btn.prev { left: 0.5rem; }
 .lookbook-btn.next { right: 0.5rem; }
 
+/* ------------------------------
+   COLOR SELECTOR
+--------------------------------*/
+.color-selector {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+}
+.color-selector h2 {
+  margin-bottom: 1rem;
+  color: var(--mw-cyan);
+}
+.color-wheel {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--mw-bg-secondary);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.color-swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.color-swatch.active {
+  outline: 2px solid var(--mw-cyan);
+  box-shadow: 0 0 15px var(--mw-cyan);
+}
+
 
