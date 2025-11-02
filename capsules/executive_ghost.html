@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuseWear — Executive Ghost Capsule</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Nav -->
+  <nav class="product-nav">
+    <a href="../index.html" class="nav-logo">MUSEWEAR</a>
+    <div class="nav-links">
+      <a href="../index.html#capsules">Archive</a>
+      <a href="../about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="parallax-hero" style="background-image:url('../assets/images/division_zero_hero.jpg');">
+    <h1>Executive Ghost</h1>
+  </section>
+
+  <!-- Concept -->
+  <section class="product-overview">
+    <h2>Concept</h2>
+    <p><em>Silence is the first fabric.</em> The Executive Ghost Capsule defines MuseWear’s foundational silhouette —
+       muted geometry, surgical seams, fabrics woven with metallic whisper. Every piece is cut for stillness and structure.</p>
+  </section>
+
+  <!-- Lookbook -->
+  <section class="product-grid">
+    <div class="product-card">
+      <div class="product-card-image capsule-division-zero"><span class="product-placeholder">Look 01</span></div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image capsule-division-zero"><span class="product-placeholder">Look 02</span></div>
+    </div>
+    <div class="product-card">
+      <div class="product-card-image capsule-division-zero"><span class="product-placeholder">Look 03</span></div>
+    </div>
+  </section>
+
+  <!-- Composition -->
+  <section class="product-specs">
+    <h2>Composition</h2>
+    <div class="specs-grid">
+      <div class="spec-item"><span class="spec-label">Capsule Code</span><span class="spec-value">MW-DZ-01</span></div>
+      <div class="spec-item"><span class="spec-label">Materials</span><span class="spec-value">Microfiber Alloy Blend / Reflective Poly Weave</span></div>
+      <div class="spec-item"><span class="spec-label">Colorway</span><span class="spec-value">Graphite / Silver</span></div>
+      <div class="spec-item"><span class="spec-label">Care</span><span class="spec-value">Cold Machine Wash / No Direct Heat</span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="product-cta">
+    <h2>Return to Archive</h2>
+    <a href="../index.html#capsules" class="purchase-btn">Back to Capsules</a>
+    <p class="cta-subtext">MuseWear · Division of Muse Systems</p>
+  </section>
+  
+  <section class="lookbook">
+    <h2>Lookbook</h2>
+    <div class="lookbook-container">
+      <button class="lookbook-btn prev">&#10094;</button>
+      <div class="lookbook-track">
+        <div class="lookbook-item"><img src="../assets/images/division_zero_01.jpg" alt="Look 01"></div>
+        <div class="lookbook-item"><img src="../assets/images/division_zero_02.jpg" alt="Look 02"></div>
+        <div class="lookbook-item"><img src="../assets/images/division_zero_03.jpg" alt="Look 03"></div>
+      </div>
+      <button class="lookbook-btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <footer class="product-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>MUSEWEAR</h3>
+        <p>“Fiction Dresses Function.”</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+const track = document.querySelector('.lookbook-track');
+const items = document.querySelectorAll('.lookbook-item');
+const next = document.querySelector('.lookbook-btn.next');
+const prev = document.querySelector('.lookbook-btn.prev');
+let index = 0;
+
+function updateSlider() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+next.addEventListener('click', () => {
+  index = (index + 1) % items.length;
+  updateSlider();
+});
+
+prev.addEventListener('click', () => {
+  index = (index - 1 + items.length) % items.length;
+  updateSlider();
+});
+</script>
+
+  <section class="color-selector">
+  <h2>Color Variants</h2>
+  <div class="color-wheel">
+    <button class="color-swatch" data-color="graphite" style="background:#9e9e9e" title="Graphite"></button>
+    <button class="color-swatch" data-color="green" style="background:#8bc34a" title="Green"></button>
+    <button class="color-swatch" data-color="blue" style="background:#00bcd4" title="Blue"></button>
+    <button class="color-swatch" data-color="red" style="background:#ff1744" title="Red"></button>
+  </div>
+</section>
+
+<section class="lookbook">
+  <h2>Lookbook</h2>
+  <div class="lookbook-container">
+    <div class="lookbook-track">
+      <div class="lookbook-item"><img id="look1" src="../assets/images/division_zero_graphite_01.jpg" alt="Look 01"></div>
+      <div class="lookbook-item"><img id="look2" src="../assets/images/division_zero_graphite_02.jpg" alt="Look 02"></div>
+      <div class="lookbook-item"><img id="look3" src="../assets/images/division_zero_graphite_03.jpg" alt="Look 03"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const swatches = document.querySelectorAll('.color-swatch');
+const looks = [
+  document.getElementById('look1'),
+  document.getElementById('look2'),
+  document.getElementById('look3')
+];
+
+// Default base name (everything before _color_##)
+const baseName = 'division_zero'; // adjust per capsule
+const variants = ['graphite', 'green', 'blue', 'red']; // same as data-color list
+
+swatches.forEach(swatch => {
+  swatch.addEventListener('click', () => {
+    const color = swatch.dataset.color;
+    swatches.forEach(s => s.classList.remove('active'));
+    swatch.classList.add('active');
+
+    // swap each look image source
+    looks.forEach((img, index) => {
+      img.src = `../assets/images/${baseName}_${color}_0${index + 1}.jpg`;
+    });
+  });
+});
+</script>
+  
+<section class="color-selector">
+  <h2>Color Variants</h2>
+  <div class="color-wheel">
+    <button class="color-swatch" data-color="graphite" data-hex="#9e9e9e" title="Graphite"></button>
+    <button class="color-swatch" data-color="green" data-hex="#8bc34a" title="Green"></button>
+    <button class="color-swatch" data-color="blue" data-hex="#00bcd4" title="Blue"></button>
+    <button class="color-swatch" data-color="red" data-hex="#ff1744" title="Red"></button>
+  </div>
+  <p id="variant-name" class="variant-label">Graphite Edition</p>
+</section>
+
+<script>
+const swatches = document.querySelectorAll('.color-swatch');
+const looks = [
+  document.getElementById('look1'),
+  document.getElementById('look2'),
+  document.getElementById('look3')
+];
+const variantLabel = document.getElementById('variant-name');
+const baseName = 'division_zero'; // adjust per capsule
+
+swatches.forEach(swatch => {
+  swatch.addEventListener('click', () => {
+    const color = swatch.dataset.color;
+    const hex = swatch.dataset.hex;
+    const labelText = `${swatch.title} Edition`;
+
+    // highlight selected swatch
+    swatches.forEach(s => s.classList.remove('active'));
+    swatch.classList.add('active');
+
+    // fade out images
+    looks.forEach(img => img.classList.add('fade-out'));
+
+    // after fade, swap sources then fade back in
+    setTimeout(() => {
+      looks.forEach((img, index) => {
+        img.src = `../assets/images/${baseName}_${color}_0${index + 1}.jpg`;
+      });
+      setTimeout(() => {
+        looks.forEach(img => img.classList.remove('fade-out'));
+      }, 50);
+    }, 400);
+
+    // update caption color and text
+    variantLabel.textContent = labelText;
+    variantLabel.style.color = hex;
+    document.documentElement.style.setProperty('--mw-cyan', hex);
+  });
+});
+</script>
+  
+</body>
+</html>
+
+
+
+
+
