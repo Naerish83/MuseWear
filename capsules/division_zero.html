@@ -124,7 +124,35 @@ prev.addEventListener('click', () => {
   </div>
 </section>
 
+<script>
+const swatches = document.querySelectorAll('.color-swatch');
+const looks = [
+  document.getElementById('look1'),
+  document.getElementById('look2'),
+  document.getElementById('look3')
+];
+
+// Default base name (everything before _color_##)
+const baseName = 'division_zero'; // adjust per capsule
+const variants = ['graphite', 'green', 'blue', 'red']; // same as data-color list
+
+swatches.forEach(swatch => {
+  swatch.addEventListener('click', () => {
+    const color = swatch.dataset.color;
+    swatches.forEach(s => s.classList.remove('active'));
+    swatch.classList.add('active');
+
+    // swap each look image source
+    looks.forEach((img, index) => {
+      img.src = `../assets/images/${baseName}_${color}_0${index + 1}.jpg`;
+    });
+  });
+});
+</script>
+  
+  
 </body>
 </html>
+
 
 
